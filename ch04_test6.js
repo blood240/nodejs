@@ -7,4 +7,4 @@ fs.readFile('./package.json', 'utf8', function(err, data) {
     console.log(data);
 });
 
-console.log('프로젝트 폴더 안의 패키지 제이슨  파일을 읽도록 요청했습니다.12');
+console.log('프로젝트 폴더 안의 패키지 제이슨  파일을 읽도록 요청했습니다.');
