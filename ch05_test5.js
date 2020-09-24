@@ -1,10 +1,11 @@
 var http = require('http');
+var fs = require('fs');
 
 //웹 서버 객체를만듭니다.
 var server = http.createServer();
 
 //웹 서버를 시작하여 3000번 포트에서 대기 하도록 설정합니다.
-var port = 3000;
+var port = 3006;
 server.listen(port, function(){
     console.log('웹 서버가 시작되었습니다. : %d', port);
 });
@@ -18,8 +19,15 @@ server.on('connection', function(socket){
 //클라이언트 요청 이벤트 처리
 server.on('request', function(req, res) {
     console.log('클라이언트 요청이 들어왔습니다.');
-    console.dir(req);
+    
+    var filename = 'house.jpg';
+    fs.readFile(filename, function(err, data) {
+        res.writeHead(200, {"Content-Type": "image/jpg"});
+        res.write(data);
+        res.end();
+    });
 });
+
 
 //서버 종료 이벤트 처리
 server.on('close', function(){
